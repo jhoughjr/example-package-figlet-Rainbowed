@@ -9,10 +9,17 @@ let package = Package(
             name: "Figlet",
             targets: ["Figlet"]
         ),
+    ], dependencies: [
+        .package(url: "https://github.com/onevcat/Rainbow",
+                 from: "4.0.0")
+        
     ],
     targets: [
         .target(
             name: "Figlet",
+            dependencies: [
+                .product(name: "Rainbow", package: "Rainbow")
+            ],
             resources: [
                 .process("standard.flf")
             ]

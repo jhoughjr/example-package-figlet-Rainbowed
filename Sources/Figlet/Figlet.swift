@@ -11,8 +11,10 @@
 //===--------------------------------------------------------------------
 
 import Foundation
+import Rainbow
 
 public enum Figlet {
+    
     public static func say(_ text: String) {
         guard let figletFileURL = Bundle.module.url(forResource: "standard", withExtension: "flf") else {
             fatalError("invalid figlet font file: missing resource")
@@ -27,7 +29,9 @@ public enum Figlet {
         for line in 0 ..< font.height {
             for c in text {
                 if let fontCharacter = font.characters[c], line < fontCharacter.lines.count {
-                    print(fontCharacter.lines[line], separator: "", terminator: "")
+                    print(fontCharacter.lines[line].green,
+                          separator: "",
+                          terminator: "")
                 }
             }
             print("")
